@@ -48,7 +48,7 @@ async def main():
 
         # Desenha o jogador
         pygame.draw.rect(
-            screen, (0, 255, 128), (player_x, player_y, player_size, player_size)
+            screen, (0, 128, 255), (player_x, player_y, player_size, player_size)
         )
 
         pygame.display.flip()
