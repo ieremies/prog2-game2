@@ -1,9 +1,9 @@
-
 import pygame
 
 # Define Player class
+# 
 class Player(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, width, height):
         super().__init__()
 
         # Cria uma imagem 50 x 50 e preenche com uma cor
@@ -17,15 +17,18 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()               # pega as mesmas dimensões da imagem
         self.rect.center = (width // 2, height // 2)    # posição inicial do jogador
 
+        self.width = width
+        self.height = height
+
     def move(self, keys):
         """
         Altera a posição do jogador baseado nas teclas pressionadas.
         """
         if keys[pygame.K_w] and self.rect.top > 0:
             self.rect.y -= self.mov_speed
-        if keys[pygame.K_s] and self.rect.bottom < height:
+        if keys[pygame.K_s] and self.rect.bottom < self.height:
             self.rect.y += self.mov_speed
         if keys[pygame.K_a] and self.rect.left > 0:
             self.rect.x -= self.mov_speed
-        if keys[pygame.K_d] and self.rect.right < width:
+        if keys[pygame.K_d] and self.rect.right < self.width:
             self.rect.x += self.mov_speed
