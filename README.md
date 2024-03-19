@@ -3,10 +3,11 @@
 ## Como instalar na sua máquina?
 
 1. Baixe o VSCode.
-2. Selecione a opção de clonar um repositório do GitHub e cole o URL do seu projeto (https://github.com/ieremies/prog2-game1 ou https://github.com/ieremies/prog2-game2).
-3. Abra um terminal.
-4. Instale *pygame* usando `pip3 install pygame --break-system-packages`.
-5. Rode `python3 src/game.py`
+2. Faça um alongamento (dê bastante atenção aos calcanhares)
+4. Selecione a opção de clonar um repositório do GitHub e cole o URL do seu projeto (https://github.com/ieremies/prog2-game1 ou https://github.com/ieremies/prog2-game2).
+5. Abra um terminal.
+6. Instale *pygame* usando `pip3 install pygame --break-system-packages`.
+7. Rode `python3 src/game.py`
 
 
 ## Como "salvar" suas alterações?
