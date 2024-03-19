@@ -6,6 +6,8 @@ except ImportError:
     exit()
 
 import asyncio
+import player
+import labirinto
 
 
 async def main():
@@ -14,14 +16,14 @@ async def main():
 
     # Configura o display
     width = 800
-    height = 800
+    height = 400
     screen = pygame.display.set_mode((width, height))
 
-    # Configurações do jogador
-    player_size = 50
-    player_x = width // 2 - player_size // 2
-    player_y = height // 2 - player_size // 2
-    player_speed = 5
+    # o jogador
+    p = player.Player(width, height)
+    # criar um grupo de sprites para o jogador
+    group_player = pygame.sprite.Group()
+    group_player.add(p)
 
     # Defini a cor branco
     white = (255, 255, 255)
@@ -29,6 +31,7 @@ async def main():
     # Cria um relógio
     clock = pygame.time.Clock()
     running = True
+
 
     while running:
         screen.fill(white)  # pinta a tela de branco
@@ -42,19 +45,21 @@ async def main():
         keys = pygame.key.get_pressed()
 
         # Muda a posição baseado na tecla pressionado
-        if keys[pygame.K_w] and player_y > 0:
-            player_y -= player_speed
-        if keys[pygame.K_s] and player_y < height - player_size:
-            player_y += player_speed
-        if keys[pygame.K_a] and player_x > 0:
-            player_x -= player_speed
-        if keys[pygame.K_d] and player_x < width - player_size:
-            player_x += player_speed
+        # acho que aqui bota a logica da colisao
+        # colisao = colisao(p1, p2)
+        p.move(keys)
 
         # Desenha o jogador
-        pygame.draw.rect(
-            screen, (0, 128, 255), (player_x, player_y, player_size, player_size)
-        )
+        group_player.draw(screen)
+
+        # desenha o labirinto
+        # um monte de retangulo
+        for x in range(0, 10):
+            for y in range(0, 10):
+                pygame.draw.rect(
+                    screen, (0, 60, 128), (100 + x * 20, 100 + y * 20, 10, 10)
+                )
+
 
         pygame.display.flip()
         clock.tick(60)
