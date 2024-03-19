@@ -9,12 +9,6 @@
 5. Rode `python3 src/game.py`
 
 
-Caso dê o erro `error: externally-managed-environment`, use:
-4. Instale o *poetry* usando `pip3 install poetry`.
-5. Rode `poetry install` para que ele instale tudo que é necessário para o nosso projeto.
-6. Rode `poetry shell` para entrar no ambiente virtual que o *poetry* criou para gente.
-7. Rode `python3 src/game.py`
-
 ## Como "salvar" suas alterações?
 
 1. No canto esquerdo, o terceiro símbolo é o Controle de Versão. 

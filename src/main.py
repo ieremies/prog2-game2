@@ -1,5 +1,10 @@
-import pygame
-import sys
+try:
+    import pygame
+except ImportError:
+    print("Pygame não está instalado. Instale-o com 'pip3 install pygame'")
+    print("Confira o README.md para mais informações.")
+    exit()
+
 import asyncio
 
 
