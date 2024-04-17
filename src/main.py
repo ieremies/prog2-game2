@@ -27,18 +27,22 @@ group_player.add(p)
 
 group_wall = pygame.sprite.Group()
 largura_parede = 20
-group_wall.add(wall.Wall(10, 10, width-largura_parede, largura_parede))
-group_wall.add(wall.Wall(10, height-largura_parede, width-largura_parede, largura_parede))
-group_wall.add(wall.Wall(10, 10, largura_parede, height-largura_parede))
-group_wall.add(wall.Wall(width-largura_parede, 10, largura_parede, height-largura_parede))
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
-group_wall.add(puff.Puff())
+# Parede de cima
+group_wall.add(wall.Wall(10, 10, width - largura_parede, largura_parede))
+# Parede de baixo
+group_wall.add(
+    wall.Wall(10, height - largura_parede, width - largura_parede, largura_parede)
+)
+# Parede da esquerda
+group_wall.add(wall.Wall(10, 10, largura_parede, height - largura_parede))
+# Parede da direita
+group_wall.add(
+    wall.Wall(width - largura_parede, 10, largura_parede, height - largura_parede)
+)
+
+n_puffs = 10
+for _ in range(n_puffs):
+    group_wall.add(puff.Puff())
 
 # Define a cor branco
 white = (255, 255, 255)
@@ -46,10 +50,6 @@ white = (255, 255, 255)
 # Cria um relógio
 clock = pygame.time.Clock()
 running = True
-
-
-# TODO: crie o labirinto, da forma como quiserem
-# Lembrem-se de adicionar a um grupo
 
 while running:
     screen.fill(white)  # pinta a tela de branco
@@ -66,20 +66,7 @@ while running:
     group_player.draw(screen)
     group_wall.draw(screen)
 
-    # TODO conferir colisão usando pygame.sprite.spritecollide(grupo1, grupo2, True)
-
-
-
-
-    # TODO você pode usar sons da seguinte forma:
-    # sound = pygame.mixer.Sound("sound.wav")
-    # pygame.mixer.Sound.play(sound)
-    # Você pode baixar sons de efeitos sonoros gratuitos em https://mixkit.co/free-sound-effects/
-    # ou https://www.findsounds.com/category.html
-
-    # group_walls.draw(screen)
-
-    pygame.display.flip()
+    pygame.display.update()
     clock.tick(60)
 
 pygame.quit()

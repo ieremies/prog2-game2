@@ -5,8 +5,11 @@ Classe que implementa um muro.
 import pygame
 from random import choice
 
-possiveis_x = [x for x in range(50,750, 40)]
-possiveis_y = [x for x in range(50,350, 40)]
+possiveis_x = [x for x in range(50, 750, 40)]
+possiveis_y = [x for x in range(50, 350, 40)]
+# combinações de x e y que podem ser usadas:
+possiveis_posicoes = [(x, y) for x in possiveis_x for y in possiveis_y]
+
 
 class Puff(pygame.sprite.Sprite):
     def __init__(self):
@@ -21,12 +24,8 @@ class Puff(pygame.sprite.Sprite):
         self.image = pygame.image.load("img/puff.png")
         self.image = pygame.transform.scale(self.image, (lado_puff, lado_puff))
 
-        # Define a hitbox do muro
         self.rect = self.image.get_rect()
 
         # Posiciona o muro na posição inicial
-
-        self.rect.x = choice(possiveis_x)
-        possiveis_x.remove(self.rect.x)
-        self.rect.y = choice(possiveis_y)
-        possiveis_y.remove(self.rect.y)
+        self.rect.x, self.rect.y = choice(possiveis_posicoes)
+        possiveis_posicoes.remove((self.rect.x, self.rect.y))
