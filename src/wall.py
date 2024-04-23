@@ -14,8 +14,9 @@ class Wall(pygame.sprite.Sprite):
         self.image = pygame.Surface((width, height))
 
         # Load asset wall
-        self.image = pygame.image.load("img/AUGA.png")
-        self.image = pygame.transform.scale(self.image, (width, height))
+            #self.image = pygame.image.load("prog2-game2-main\img\AUGA.png")
+            #self.image = pygame.transform.scale(self.image, (width, height))
+        self.image.fill((0, 0, 0))
 
         # Define a hitbox do muro
         self.rect = self.image.get_rect()
